@@ -1,0 +1,1398 @@
+@font-face {
+    font-family: 'Caveat';
+    src: url('FONTS/Caveat-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('FONTS/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlayfairDisplay-italic';
+    src: url('FONTS/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'PlayfairDisplay', Georgia, 'Times New Roman', Times, serif;
+    overflow: hidden;
+    user-select: none;
+    
+    background: rgb(0, 0, 0);
+    color: white;
+    transition: background-color 0.5s ease;
+    position:  relative;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.side-menu {
+    height: 100vh;
+    width: max(600px, 70vw);
+    background-color: rgba(122, 122, 122, 0.5);
+    backdrop-filter: blur(50px);
+    padding: 50px 0;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+    z-index: 3000;
+
+    transition: transform 0.5s ease-in-out;
+}
+
+.closed {
+    transform: translateX(100%);
+}
+
+.side-menu p {
+    font-size: 2rem;
+    height: 80px;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.side-menu p:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.side-menu svg {
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.side-menuCloseBttn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.side-menuCloseBttn svg {
+    height: 30px;
+    width: 30px;
+}
+
+.switchSvgMenu {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar {
+    height: 100vh;
+    width: 100px;
+    padding: 50px 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    z-index: 1000;
+}
+
+.nav-bar .menu-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: auto;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar .menu-icon svg:hover {
+    height: 50px;
+    width: 50px;
+}
+
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-bar li {
+    height: 50px;
+    width: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar li:not(:last-child) svg:hover {
+    height: 50px;
+    width: 50px;
+}
+
+.nav-bar li:last-child svg {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+svg {
+    fill: white;
+    height: 40px;
+    width: 40px;
+    transition: fill 0.5s ease;
+    transition: width 0.2s ease, height 0.2s ease;
+}
+
+path {
+    transition: d 0.5s ease;
+}
+
+.logo {
+    height: 100px;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 50px;
+    z-index: 999;
+}
+
+.logo p {
+    font-family: 'Caveat', fantasy, cursive;
+    font-size: 1.5rem;
+}
+
+.hero {
+    width: calc(100vw - 100px);
+    height: 100vh;
+    position: relative;
+}
+
+.fundal-negru {
+    background-image: url('IMAGES/fundal-negru.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.fundal-alb {
+    background-image: url('IMAGES/fundal-alb.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.fundal-activ {
+    opacity: 1;
+}
+
+h2 {
+    font-family: 'Caveat', fantasy, cursive;
+    font-size: 2rem;
+    font-weight: lighter;
+    letter-spacing: 3px;
+}
+
+h1 {
+    font-family: 'PlayfairDisplay', 'Times New Roman', Times, serif;
+    font-size: 2.5rem;
+    font-weight: lighter;
+    letter-spacing: 3px;
+}
+
+p {
+    font-family: 'PlayfairDisplay', 'Times New Roman', Times, serif;
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: text-shadow 0.15s ease, text-decoration 2s ease;
+}
+
+a:hover {
+    text-decoration: overline;
+    text-shadow: 2px 2px 20px rgb(255, 255, 255);
+}
+
+.contents {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.contents > div {
+    display: none;
+}
+
+.active {
+    display: flex !important;
+}
+
+.main {
+    height: 500px;
+    width: 800px;
+    perspective: 2000px;
+    position: relative;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.main p {
+    font-size: 1.75rem;
+    line-height: 1.5;
+}
+
+.main > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about {
+    height: 520px;
+    width: 1120px;
+    perspective: 2000px;
+    position: relative;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.about > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    gap: 20px;
+}
+
+.about p {
+    font-size: 1.625rem;
+    line-height: 1.5;
+}
+
+.section3 {
+    height: 460px;
+    width: 900px;
+    perspective: 2000px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.section3 > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    gap: 20px;
+}
+
+.section3 p {
+    font-size: 1.375rem;
+    line-height: 1.5;
+}
+
+.pt1 {
+    align-items: baseline !important;
+    justify-content: flex-end !important;
+}
+
+.pt2 p {
+    font-size: 1.313rem;
+}
+
+.pt {
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 50px 70px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px);   
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    visibility: hidden;
+    transition: transform 1s ease, visibility 1s ease, background-color 1s ease, border-color 0.5s ease;
+    transform: rotateX(180deg);
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.currentCard {
+    visibility: visible !important;
+    transform: rotateX(0deg) !important;
+}
+
+.scroll-icon2 {
+	width: 50px;
+	height: 100px;
+	border: 3px solid #fff;
+    transition: border-color 0.5s ease;
+	border-radius: 60px;
+	position: relative;
+	&::before {
+		content: '';
+		width: 15px;
+		height: 15px;
+		position: absolute;
+		top: 60px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: #fff;
+		border-radius: 50%;
+		opacity: 1;
+		animation: wheel1 3s infinite;
+		-webkit-animation: wheel1 3s infinite;
+	}
+    position: fixed;
+    bottom: 0;
+    right: -70px;
+}
+
+.scroll-icon1 {
+	width: 50px;
+	height: 100px;
+	border: 3px solid #fff;
+    transition: border-color 0.5s ease;
+	border-radius: 60px;
+	position: relative;
+	&::before {
+		content: '';
+		width: 15px;
+		height: 15px;
+		position: absolute;
+		top: 60px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: #fff;
+		border-radius: 50%;
+		opacity: 1;
+		animation: wheel2 3s infinite;
+		-webkit-animation: wheel2 3s infinite;
+	}
+    position: fixed;
+    bottom: 0;
+    right: -70px;
+}
+
+@keyframes wheel1 {
+	0% {
+		opacity: 1;
+		top: 60px;
+	}
+	75% {
+		opacity: 0;
+		top: 10px;
+	}
+	95% {
+		opacity: 0;
+		top: 60px;
+	}
+	100% {
+		opacity: 1;
+		top: 60px;
+	}
+}
+
+@keyframes wheel2 {
+	0% {
+		opacity: 1;
+		top: 10px;
+	}
+	75% {
+		opacity: 0;
+		top: 60px;
+	}
+	95% {
+		opacity: 0;
+		top: 10px;
+	}
+	100% {
+		opacity: 1;
+		top: 10px;
+	}
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 2001;
+    color: black;
+
+    font-size: 1.5rem;
+}
+
+.popup-content {
+    box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.5);
+
+    user-select: none;
+
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    width: 500px;
+    position: relative;
+
+    padding: 50px;
+
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content h2,
+.popup-content p {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+    font-family: 'PlayfairDisplay', 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.popup-content h2 {
+    font-size: 2.25rem;
+}
+
+.popup-content p {
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    padding: 0 15px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 3rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 2000;
+
+    pointer-events: all;
+}
+
+@media (1440px <= width < 1600px) {
+    html, body {
+        font-size: 14px;
+    }
+
+    .main {
+        height: 400px;
+    }
+
+    .contents > div {
+        max-width: 900px;
+        max-height: 500px;
+    }
+
+    .section3 {
+        width: 800px;
+        height: 450px;
+    }
+
+    .popup-content {
+        width: 400px;
+        gap: 10px;
+        padding: 30px;
+    }
+
+    .nav-bar {
+        width: 80px;
+        padding: 50px 15px;
+    }
+
+    .hero {
+        width: calc(100vw - 80px);
+    }
+
+    .scroll-icon1, .scroll-icon2 {
+        height: 70px;
+        width: 36px;
+        &::before {
+            width: 10px;
+            height: 10px;
+        }
+        right: -56px;
+    }
+
+    @keyframes wheel1 {
+        0% {
+            opacity: 1;
+            top: 45px;
+        }
+        75% {
+            opacity: 0;
+            top: 10px;
+        }
+        95% {
+            opacity: 0;
+            top: 45px;
+        }
+        100% {
+            opacity: 1;
+            top: 45px;
+        }
+    }
+    
+    @keyframes wheel2 {
+        0% {
+            opacity: 1;
+            top: 10px;
+        }
+        75% {
+            opacity: 0;
+            top: 45px;
+        }
+        95% {
+            opacity: 0;
+            top: 10px;
+        }
+        100% {
+            opacity: 1;
+            top: 10px;
+        }
+    }
+
+}
+
+@media (1024px <= width < 1440px) {
+    html, body {
+        font-size: 12px;
+    }
+
+    .side-menu p {
+        height: 70px;
+    }
+
+    .switchSvgMenu {
+        height: 70px;
+    }
+
+    .side-menu svg {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .side-menuCloseBttn svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    .popup-content {
+        width: 400px;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .hero {
+        width: calc(100vw - 70px);
+    }
+
+    .nav-bar {
+        width: 70px;
+        padding: 50px 10px;
+    }
+
+    .scroll-icon1, .scroll-icon2 {
+        height: 70px;
+        width: 36px;
+        &::before {
+            width: 10px;
+            height: 10px;
+        }
+        right: -56px;
+    }
+
+    @keyframes wheel1 {
+        0% {
+            opacity: 1;
+            top: 45px;
+        }
+        75% {
+            opacity: 0;
+            top: 10px;
+        }
+        95% {
+            opacity: 0;
+            top: 45px;
+        }
+        100% {
+            opacity: 1;
+            top: 45px;
+        }
+    }
+    
+    @keyframes wheel2 {
+        0% {
+            opacity: 1;
+            top: 10px;
+        }
+        75% {
+            opacity: 0;
+            top: 45px;
+        }
+        95% {
+            opacity: 0;
+            top: 10px;
+        }
+        100% {
+            opacity: 1;
+            top: 10px;
+        }
+    }
+
+    .main {
+        width: 600px;
+        height: 350px;
+    }
+
+    .about {
+        height: 450px;
+        width: 650px;
+        perspective: 2000px;
+        position: relative;
+    
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about .pt {
+        padding: 50px 50px;
+    }
+
+    .about p {
+        font-size: 1.55rem;
+    }
+
+    .section3 {
+        height: 400px;
+        width: 650px;
+    }
+}
+
+@media (768px <= width < 1024px) {
+    html, body {
+        font-size: 8px;
+    }
+
+    .side-menu {
+        width: 70vw;
+    }
+
+    .side-menu p {
+        height: 70px;
+    }
+
+    .switchSvgMenu {
+        height: 70px;
+    }
+
+    .side-menu svg {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .side-menuCloseBttn svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    .popup-content {
+        width: 300px;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .contents > div {
+        max-width: 450px;
+        max-height: 300px;
+    }
+
+    .pt {
+        padding: 20px 30px;
+    }
+
+    .main {
+        height: 230px;
+        width: 400px;
+    }
+
+    .about > div {
+        gap: 10px;
+    }
+
+    .section3 {
+        height: 250px;
+    }
+
+    .section3 > div {
+        gap: 8px;
+    }
+
+    .logo {
+        height: 60px;
+        padding: 0 30px;
+    }
+
+    .nav-bar {
+        width: 50px;
+        padding: 30px 10px;
+    }
+
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .nav-bar .menu-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .nav-bar .menu-icon svg:hover {
+        height: 30px;
+        width: 30px;
+    }
+
+    .nav-bar ul {
+        gap: 10px;
+    }
+    .nav-bar li {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .nav-bar li:not(:last-child) svg:hover {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .nav-bar li:last-child svg {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .hero {
+        width: calc(100vw - 50px);
+    }
+
+    .scroll-icon1, .scroll-icon2 {
+        height: 60px;
+        width: 28px;
+        border: 2px solid white;
+        &::before {
+            width: 10px;
+            height: 10px;
+        }
+        right: -48px;
+    }
+
+    @keyframes wheel1 {
+        0% {
+            opacity: 1;
+            top: 40px;
+        }
+        75% {
+            opacity: 0;
+            top: 15px;
+        }
+        95% {
+            opacity: 0;
+            top: 40px;
+        }
+        100% {
+            opacity: 1;
+            top: 40px;
+        }
+    }
+    
+    @keyframes wheel2 {
+        0% {
+            opacity: 1;
+            top: 15px;
+        }
+        75% {
+            opacity: 0;
+            top: 40px;
+        }
+        95% {
+            opacity: 0;
+            top: 15px;
+        }
+        100% {
+            opacity: 1;
+            top: 15px;
+        }
+    }
+}
+
+@media (480px <= width < 768px) {
+    html, body {
+        font-size: 6px;
+    }
+
+    .side-menu {
+        width: 70vw;
+    }
+
+    .side-menu p {
+        height: 50px;
+    }
+
+    .switchSvgMenu {
+        height: 50px;
+    }
+
+    .side-menu svg {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .side-menuCloseBttn svg {
+        height: 20px;
+        width: 20px;
+    }
+
+    .popup-content {
+        width: 200px;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .contents > div {
+        max-width: 300px;
+        max-height: 350px;
+    }
+
+    .pt {
+        padding: 20px 30px;
+    }
+
+    .main {
+        height: 230px;
+        width: 400px;
+    }
+
+    .about > div {
+        gap: 10px;
+    }
+
+    .section3 {
+        height: 250px;
+    }
+
+    .section3 > div {
+        gap: 8px;
+    }
+
+    .logo {
+        height: 50px;
+        padding: 0 30px;
+    }
+
+    .nav-bar {
+        width: 50px;
+        padding: 30px 10px;
+    }
+
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .nav-bar .menu-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .nav-bar .menu-icon svg:hover {
+        height: 30px;
+        width: 30px;
+    }
+
+    .nav-bar ul {
+        gap: 10px;
+    }
+    .nav-bar li {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .nav-bar li:not(:last-child) svg:hover {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .nav-bar li:last-child svg {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .hero {
+        width: calc(100vw - 50px);
+    }
+
+    .scroll-icon1, .scroll-icon2 {
+        height: 30px;
+        width: 14px;
+        border: 1px solid white;
+        &::before {
+            width: 4px;
+            height: 4px;
+        }
+        right: -22px;
+    }
+
+    @keyframes wheel1 {
+        0% {
+            opacity: 1;
+            top: 16px;
+        }
+        75% {
+            opacity: 0;
+            top: 5px;
+        }
+        95% {
+            opacity: 0;
+            top: 16px;
+        }
+        100% {
+            opacity: 1;
+            top: 16px;
+        }
+    }
+    
+    @keyframes wheel2 {
+        0% {
+            opacity: 1;
+            top: 5px;
+        }
+        75% {
+            opacity: 0;
+            top: 16px;
+        }
+        95% {
+            opacity: 0;
+            top: 5px;
+        }
+        100% {
+            opacity: 1;
+            top: 5px;
+        }
+    }
+}
+
+@media (375px <= width < 480px) {
+    html, body {
+        font-size: 9px;
+        overflow: hidden;
+    }
+
+    .side-menu {
+        width: 100vw;
+    }
+
+    .side-menu p {
+        height: 50px;
+    }
+
+    .switchSvgMenu {
+        height: 40px;
+    }
+
+    .side-menu svg {
+        height: 40px;
+        width: 40px;
+    }
+
+    .side-menuCloseBttn svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    .popup-content {
+        width: 250px;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .logo {
+        height: 60px;
+        padding: 0 30px;
+    }
+
+    .nav-bar {
+        height: 60px;
+        width: 100vw;
+        padding: 0 30px;
+    }
+
+    .nav-bar ul {
+        display: none;
+    }
+
+    .nav-bar .menu-icon {
+        width: 30px;
+        height: 30px;
+        margin-left: auto;
+        margin-top: auto;
+    }
+
+    .nav-bar .menu-icon svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    .hero {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .hero > div {
+        height: calc(100vh - 60px);
+        width: 100vw;
+        top: 60px;
+    }
+
+    .contents > div {
+        max-width: 300px;
+        max-height: 450px;
+    }
+
+    .main {
+        height: 400px;
+    }
+
+    .about > div {
+        gap: 10px;
+    }
+
+    .about p {
+        font-size: 1.5rem;
+    }
+
+    .pt {
+        padding: 20px 20px;
+        transform: rotateX(0deg);
+        transform: rotateY(180deg);
+    }
+
+    .currentCard {
+        transform: rotateY(0deg) !important;
+    }
+
+    .scroll-icon1, .scroll-icon2 {
+        bottom: auto;
+        right: auto;
+        top: -10px;
+        left: 0;
+        transform: rotate(270deg);
+        transform-origin: left top;
+
+        height: 40px;
+        width: 20px;
+        border: 2px solid white;
+        &::before {
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    @keyframes wheel1 {
+        0% {
+            opacity: 1;
+            top: 23px;
+        }
+        75% {
+            opacity: 0;
+            top: 5px;
+        }
+        95% {
+            opacity: 0;
+            top: 23px;
+        }
+        100% {
+            opacity: 1;
+            top: 23px;
+        }
+    }
+    
+    @keyframes wheel2 {
+        0% {
+            opacity: 1;
+            top: 5px;
+        }
+        75% {
+            opacity: 0;
+            top: 23px;
+        }
+        95% {
+            opacity: 0;
+            top: 5px;
+        }
+        100% {
+            opacity: 1;
+            top: 5px;
+        }
+    }
+}
+
+@media (320px <= width < 375px) {
+    html, body {
+        font-size: 8px;
+        overflow: hidden;
+    }
+
+    .side-menu {
+        width: 100vw;
+    }
+
+    .side-menu p {
+        height: 50px;
+    }
+
+    .switchSvgMenu {
+        height: 40px;
+    }
+
+    .side-menu svg {
+        height: 40px;
+        width: 40px;
+    }
+
+    .side-menuCloseBttn svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    .popup-content {
+        width: 250px;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .logo {
+        height: 60px;
+        padding: 0 30px;
+    }
+
+    .nav-bar {
+        height: 60px;
+        width: 100vw;
+        padding: 0 30px;
+    }
+
+    .nav-bar ul {
+        display: none;
+    }
+
+    .nav-bar .menu-icon {
+        width: 30px;
+        height: 30px;
+        margin-left: auto;
+        margin-top: auto;
+    }
+
+    .nav-bar .menu-icon svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    .hero {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .hero > div {
+        height: calc(100vh - 60px);
+        width: 100vw;
+        top: 60px;
+    }
+
+    .contents > div {
+        max-width: 280px;
+        max-height: 380px;
+    }
+
+    .main {
+        height: 350px;
+    }
+
+    .about > div {
+        gap: 10px;
+    }
+
+    .about p {
+        font-size: 1.5rem;
+    }
+
+    .section3 {
+        height: 330px;
+    }
+
+    .section3 > .pt2 {
+        gap: 4px;
+    }
+
+    .pt {
+        padding: 20px 20px;
+        transform: rotateX(0deg);
+        transform: rotateY(180deg);
+    }
+
+    .currentCard {
+        transform: rotateY(0deg) !important;
+    }
+
+    .scroll-icon1, .scroll-icon2 {
+        bottom: auto;
+        right: auto;
+        top: -10px;
+        left: 0;
+        transform: rotate(270deg);
+        transform-origin: left top;
+
+        height: 40px;
+        width: 20px;
+        border: 2px solid white;
+        &::before {
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    @keyframes wheel1 {
+        0% {
+            opacity: 1;
+            top: 23px;
+        }
+        75% {
+            opacity: 0;
+            top: 5px;
+        }
+        95% {
+            opacity: 0;
+            top: 23px;
+        }
+        100% {
+            opacity: 1;
+            top: 23px;
+        }
+    }
+    
+    @keyframes wheel2 {
+        0% {
+            opacity: 1;
+            top: 5px;
+        }
+        75% {
+            opacity: 0;
+            top: 23px;
+        }
+        95% {
+            opacity: 0;
+            top: 5px;
+        }
+        100% {
+            opacity: 1;
+            top: 5px;
+        }
+    }
+}
