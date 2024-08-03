@@ -930,6 +930,7 @@ a:hover {
 
     .side-menu {
         width: 70vw;
+        background-color: rgba(0, 0, 0, 0.8);
     }
 
     .side-menu p {
@@ -1087,6 +1088,7 @@ a:hover {
 
     .side-menu {
         width: 100vw;
+        background-color: rgba(0, 0, 0, 0.8);
     }
 
     .side-menu p {
@@ -1242,6 +1244,7 @@ a:hover {
 
     .side-menu {
         width: 100vw;
+        background-color: rgba(0, 0, 0, 0.8);
     }
 
     .side-menu p {
